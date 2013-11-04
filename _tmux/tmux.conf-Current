@@ -1,0 +1,67 @@
+# As default shell
+set -g default-shell /usr/local/bin/fish
+set-window-option -g utf8 on
+
+unbind C-b
+set -g prefix C-a
+#bind C-a send-prefix
+
+set-window-option -g mode-keys vi # vi key
+set-option -g status-keys vi
+set-window-option -g utf8 on
+set-window-option -g mode-mouse off
+set -g base-index 1
+
+unbind [
+bind Escape copy-mode
+
+bind-key C-y save-buffer /tmp/tmux-buffer \; run-shell "cat /tmp/tmux-buffer | xclip"
+
+set-option -g mouse-select-pane off
+unbind %
+bind + split-window -h # horizontal split
+unbind '"'
+bind _ split-window -v # vertical split
+bind C-j previous-window
+bind C-k next-window
+
+set-option -g set-titles on
+set-option -g set-titles-string '#S:#I.#P #W' # window number,program name,active (or not)
+set-window-option -g automatic-rename on # auto name
+
+#set-window-option -g mode-bg magenta
+#set-window-option -g mode-fg black
+#set-option -g message-bg magenta
+#set-option -g message-fg black
+
+set -g visual-activity off
+set -g visual-bell off
+
+bind-key -n C-right next
+
+bind-key -n C-left prev
+
+set-option -g status-utf8 on
+set-option -g status-justify right
+set-option -g status-bg black
+set-option -g status-fg cyan
+set-option -g status-interval 5
+set-option -g status-left-length 30
+set-option -g status-left '#[fg=magenta]» #[fg=blue,bold]#T#[default]'
+set-option -g status-right '#[fg=cyan]»» #[fg=blue,bold]###S #[fg=magenta]%R %m-%d#(acpi | cut -d ',' -f 2)#[default]'
+set-option -g visual-activity on
+set-window-option -g monitor-activity on
+set-window-option -g window-status-current-fg white
+
+set-window-option -g clock-mode-colour cyan
+set-window-option -g clock-mode-style 24
+
+bind-key -n F1 select-window -t 1
+bind-key -n F2 select-window -t 2
+bind-key -n F3 select-window -t 3
+bind-key -n F4 select-window -t 4
+bind-key -n F5 select-window -t 5
+bind-key -n F6 select-window -t 6
+bind-key -n F7 select-window -t 7
+bind-key -n F8 select-window -t 8
+bind-key -n F9 select-window -t 9
